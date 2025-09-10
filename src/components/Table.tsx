@@ -24,6 +24,7 @@ function Table() {
     []
   );
   const [rows, setRows] = useState<string>("");
+  const [first, setFirst] = useState(0);
   const op = useRef<any>(null);
 
   const selectRows = (count: number, items: Product[]) => {
@@ -88,6 +89,7 @@ function Table() {
 
   function onPage(event: any) {
     setPage(event.page + 1);
+    setFirst(event.first);
   }
 
   function applyRows() {
@@ -139,6 +141,7 @@ function Table() {
   return (
     <div>
       <DataTable
+        first={first}
         value={products}
         lazy
         selectionMode={"checkbox"}
